@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
-import { prisma } from '../../index.js';
+import { prisma } from "../index.js"
 
+// Rotas de autenticacao
 async function routes(fastify, options) {
   fastify.post('/sign-out', async (request, reply) => {
     const { email, password, address, phone, rg, birthDate } = request.body;

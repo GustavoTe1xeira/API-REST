@@ -1,7 +1,7 @@
-import { prisma } from '../../index.js';
+import { prisma } from "../index.js"
 import bcrypt from 'bcrypt';
 
-async function routes(fastify, options) {
+async function routes(fastify) {
   fastify.get('/users', { preValidation: [fastify.authenticate] }, async (request, reply) => {
     if (request.user.role !== 'ADMIN') return reply.status(403).send();
     const users = await prisma.user.findMany();
